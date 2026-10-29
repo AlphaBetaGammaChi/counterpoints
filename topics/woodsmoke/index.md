@@ -40,6 +40,10 @@ closed windows. When communities have switched away from wood heating,
 - [Bonfires vs fire pits vs wood stoves vs open fires](burn-types.md) —
   same fuel, very different doses; how each burn type puts its smoke
   in a different place.
+- [**Wood smoke calculator**](calculator.html) — plug in your stove,
+  fuel load and evenings: see your PM2.5 per session/year/decade, your
+  street's total, and what it means as car-km or pools of air at the
+  WHO limit.
 - [Full bibliography](references.md) — every source, DOI-linked.
 - [Campaign groups & official resources](advocacy.md) — Doctors & Scientists
   Against Wood Smoke Pollution, Mums for Lungs, Clean Air Hub, and more.

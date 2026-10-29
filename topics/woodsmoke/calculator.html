@@ -1,0 +1,191 @@
+---
+title: Wood smoke calculator
+---
+
+<div class="ws-calc">
+<style>
+.ws-calc { font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 780px; }
+.ws-calc h3 { margin-top: 0.4em; }
+.ws-card { border: 1px solid #ddd; border-radius: 10px; padding: 16px 20px;
+           margin: 14px 0; background: #fafafa; }
+.ws-card label { display: block; font-size: 0.9em; margin: 10px 0 2px;
+                 font-weight: 600; }
+.ws-card select, .ws-card input[type=number] { font-size: 1em; padding: 6px;
+                 border: 1px solid #bbb; border-radius: 6px; width: 260px;
+                 max-width: 100%; }
+.ws-card input[type=range] { width: 260px; max-width: 100%; vertical-align: middle; }
+.ws-val { display: inline-block; min-width: 3em; font-weight: 700; color: #b34700; }
+.ws-out { font-size: 1.02em; line-height: 1.65; }
+.ws-big { font-size: 1.35em; font-weight: 700; color: #b34700; }
+.ws-eq { display: inline-block; background: #fff; border: 1px solid #e0c9a6;
+         border-radius: 8px; padding: 8px 12px; margin: 4px 6px 4px 0; }
+.ws-note { font-size: 0.8em; color: #666; }
+details.ws-note summary { cursor: pointer; font-weight: 600; color: #444; }
+details.ws-note table { font-size: 0.9em; border-collapse: collapse; margin-top: 6px; }
+details.ws-note td, details.ws-note th { border: 1px solid #ccc; padding: 3px 8px; }
+details.ws-note th { background: #eee; }
+</style>
+
+<h2>What does your burning emit?</h2>
+<p>Pick your setup. Every number is derived from the published emission
+factors in <a href="burn-types.html">burn-types</a> and
+<a href="references.html">references</a> — the assumptions box at the
+bottom shows the arithmetic.</p>
+
+<div class="ws-card">
+  <label for="appliance">What are you burning in?</label>
+  <select id="appliance">
+    <option value="ecodesign" selected>Ecodesign / Defra-exempt wood stove</option>
+    <option value="oldstove">Older conventional wood stove</option>
+    <option value="openfire">Open fireplace (indoor)</option>
+    <option value="pellet">Pellet boiler / stove</option>
+    <option value="firepit">Outdoor fire pit / chiminea</option>
+    <option value="bonfire">Garden bonfire</option>
+  </select>
+
+  <label for="kg">Fuel burned per session (kg)</label>
+  <input type="range" id="kg" min="1" max="200" value="5">
+  <span class="ws-val" id="kgv">5 kg</span>
+
+  <label for="freq">Sessions per week</label>
+  <input type="range" id="freq" min="0" max="14" value="3">
+  <span class="ws-val" id="freqv">3×/wk</span>
+
+  <label for="weeks">Weeks per year</label>
+  <input type="range" id="weeks" min="0" max="52" value="20">
+  <span class="ws-val" id="weeksv">20 wk</span>
+
+  <label for="homes">Homes on your street burning like this</label>
+  <input type="range" id="homes" min="1" max="50" value="8">
+  <span class="ws-val" id="homesv">8 homes</span>
+</div>
+
+<div class="ws-card ws-out">
+  <h3>Your household</h3>
+  <div class="ws-eq"><span class="ws-big" id="perSession">—</span><br>
+    PM2.5 per session</div>
+  <div class="ws-eq"><span class="ws-big" id="perYear">—</span><br>
+    PM2.5 per year</div>
+  <div class="ws-eq"><span class="ws-big" id="perDecade">—</span><br>
+    PM2.5 over 10 years</div>
+  <div class="ws-eq"><span class="ws-big" id="gasX">—</span><br>
+    times a gas boiler's PM2.5<br>for the same heat</div>
+  <div class="ws-eq"><span class="ws-big" id="carKm">—</span><br>
+    km driven in a Euro-6 car<br>at its PM limit, per year</div>
+  <div class="ws-eq"><span class="ws-big" id="pools">—</span><br>
+    Olympic pools of air taken to<br>the WHO 24-h limit, per year</div>
+
+  <h3>Your street</h3>
+  <p>If <span class="ws-val" id="homesv2">8 homes</span> burn like you:
+  <span class="ws-big" id="streetYear">—</span> of PM2.5 per year —
+  <span id="streetEq">—</span></p>
+
+  <p class="ws-note" id="indoorNote"></p>
+</div>
+
+<details class="ws-note">
+  <summary>Assumptions &amp; sources (click to expand)</summary>
+  <table>
+    <tr><th>Parameter</th><th>Value</th><th>Source</th></tr>
+    <tr><td>Emission factors (g PM2.5/MWh)</td>
+        <td>open fire 2,950 · old stove 2,660 · Ecodesign 335 · pellet 216 ·
+            gas boiler 0.72</td>
+        <td>EMEP/EEA 2019 via UK CMO Annual Report 2022, Fig. 10;
+            fire pit &amp; bonfire use open-burning factors
+            (Lemieux 2004; damp-waste penalty ~1.7×)</td></tr>
+    <tr><td>Wood energy content</td><td>~15.5 MJ/kg → ~0.0043 MWh/kg</td>
+        <td>seasoned logs, standard</td></tr>
+    <tr><td>g PM2.5 per kg</td><td>EF × 0.0043 (derived)</td><td>—</td></tr>
+    <tr><td>Car equivalence</td><td>4.5 mg PM2.5/km</td>
+        <td>Euro-6 tailpipe PM limit</td></tr>
+    <tr><td>WHO air equivalence</td><td>15 µg/m³ 24-h guideline · Olympic
+        pool = 2,500 m³</td><td>WHO AQG 2021</td></tr>
+    <tr><td>Indoor refuelling</td><td>PM2.5 floods the room at every
+        door-opening, incl. Ecodesign</td><td>Chakraborty et al. 2020</td></tr>
+  </table>
+  <p>Derived estimates — order of magnitude. Real-world emissions vary
+  several-fold with moisture, fuel and operation (McDonald 2000;
+  Kocbach Bølling 2009).</p>
+</details>
+</div>
+
+<script>
+(function () {
+  var EF = {  // g PM2.5 per kg fuel (EF g/MWh x 0.0043); firepit/bonfire open-burn
+    ecodesign: 335 * 0.0043,
+    oldstove: 2660 * 0.0043,
+    openfire: 2950 * 0.0043,
+    pellet:   216 * 0.0043,
+    firepit:  2950 * 0.0043,          // open combustion ≈ open fireplace
+    bonfire:  2950 * 0.0043 * 1.7     // damp garden waste penalty
+  };
+  var GAS_PER_KG = 0.72 * 0.0043;    // gas boiler per equivalent kg-wood of heat
+  var CAR_MG_PER_KM = 4.5;
+  var WHO_UG_M3 = 15, POOL_M3 = 2500;
+  var DEFAULT_KG = {ecodesign: 5, oldstove: 5, openfire: 5, pellet: 5,
+                    firepit: 8, bonfire: 100};
+  var INDOOR = {
+    ecodesign: "And indoors: PM2.5 floods your living room every time you open the door to refuel — even on Ecodesign stoves (Chakraborty et al. 2020).",
+    oldstove: "And indoors: PM2.5 floods your living room every time you open the door to refuel (Chakraborty et al. 2020).",
+    openfire: "Plus direct smoke spillage into the room — an open fire has no door to close.",
+    pellet:   "Cleaner per kg, but still ~300× a gas boiler per unit of heat.",
+    firepit:  "Released at seated head height — you and your guests breathe it directly, before it drifts to the neighbours.",
+    bonfire:  "One session — and the whole street gets it at ground level for hours."
+  };
+
+  function fmt(x, dp) {
+    if (x >= 1000) return x.toLocaleString("en-GB", {maximumFractionDigits: 0});
+    return x.toFixed(dp === undefined ? 1 : dp);
+  }
+
+  function calc() {
+    var ap = document.getElementById("appliance").value;
+    var kg = +document.getElementById("kg").value;
+    var freq = +document.getElementById("freq").value;
+    var weeks = +document.getElementById("weeks").value;
+    var homes = +document.getElementById("homes").value;
+
+    document.getElementById("kgv").textContent = kg + " kg";
+    document.getElementById("freqv").textContent = freq + "×/wk";
+    document.getElementById("weeksv").textContent = weeks + " wk";
+    document.getElementById("homesv").textContent = homes + " homes";
+    document.getElementById("homesv2").textContent = homes + " homes";
+
+    var perSession = EF[ap] * kg;
+    var sessions = freq * weeks;
+    var perYear = perSession * sessions;
+    var perDecade = perYear * 10;
+    var gasX = EF[ap] / GAS_PER_KG;
+    var carKm = perYear * 1000 / CAR_MG_PER_KM;
+    var pools = perYear * 1e6 / WHO_UG_M3 / POOL_M3;
+    var street = perYear * homes;
+
+    document.getElementById("perSession").textContent =
+      perSession < 10 ? fmt(perSession, 1) + " g" : fmt(perSession) + " g";
+    document.getElementById("perYear").textContent =
+      perYear < 1000 ? fmt(perYear) + " g" : (perYear/1000).toFixed(1) + " kg";
+    document.getElementById("perDecade").textContent =
+      (perDecade/1000).toFixed(1) + " kg";
+    document.getElementById("gasX").textContent = "×" + fmt(gasX, 0);
+    document.getElementById("carKm").textContent = fmt(carKm) + " km";
+    document.getElementById("pools").textContent = fmt(pools) + " pools";
+    document.getElementById("streetYear").textContent =
+      (street/1000).toFixed(1) + " kg";
+    document.getElementById("streetEq").textContent =
+      "≈ " + fmt(street * 1000 / CAR_MG_PER_KM) + " km of Euro-6 driving, " +
+      "or ~" + fmt(street / perSession) + " single-session burns";
+    document.getElementById("indoorNote").textContent = INDOOR[ap];
+  }
+
+  document.getElementById("appliance").addEventListener("change",
+    function (e) {
+      var el = document.getElementById("kg");
+      el.value = DEFAULT_KG[e.target.value];
+      calc();
+    });
+  ["appliance","kg","freq","weeks","homes"].forEach(function (id) {
+    document.getElementById(id).addEventListener("input", calc);
+  });
+  calc();
+})();
+</script>

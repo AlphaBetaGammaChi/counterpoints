@@ -126,3 +126,7 @@ street in one afternoon.
 - The only "clean" version of any of them is not burning. If you must
   burn outdoors, dry untreated wood, small loads, hot flames — and
   remember the smoke is the neighbours' problem too, literally.
+
+**Try it yourself:** the [wood smoke calculator](calculator.html) lets you
+plug in your appliance, fuel load and burning pattern and see the grams —
+plus what they mean as car-km and pools of air at the WHO limit.
