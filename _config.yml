@@ -1,0 +1,16 @@
+title: Counterpoints
+description: Evidence-backed rebuttals for contested topics
+theme: jekyll-theme-cayman
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+exclude:
+  - scripts
+  - topics/woodsmoke/slides.md
+  - README.md
