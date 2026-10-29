@@ -58,6 +58,22 @@ bottom shows the arithmetic.</p>
   <label for="homes">Homes on your street burning like this</label>
   <input type="range" id="homes" min="1" max="50" value="8">
   <span class="ws-val" id="homesv">8 homes</span>
+
+  <label style="margin-top:14px">
+    <input type="checkbox" id="cmp" checked>
+    Compare with the same heat from other sources
+  </label>
+</div>
+
+<div class="ws-card ws-out" id="cmpCard">
+  <h3>Same heat, different source — per year</h3>
+  <p>
+    <label><input type="radio" name="metric" value="pm25" checked> PM2.5</label>
+    &nbsp;
+    <label><input type="radio" name="metric" value="co2"> CO2 (at point of use)</label>
+  </p>
+  <div id="cmpBars"></div>
+  <p class="ws-note" id="cmpNote"></p>
 </div>
 
 <div class="ws-card ws-out">
@@ -100,6 +116,14 @@ bottom shows the arithmetic.</p>
         <td>Euro-6 tailpipe PM limit</td></tr>
     <tr><td>WHO air equivalence</td><td>15 µg/m³ 24-h guideline · Olympic
         pool = 2,500 m³</td><td>WHO AQG 2021</td></tr>
+    <tr><td>Oil boiler EF</td><td>5.4 g PM2.5/MWh</td>
+        <td>EMEP/EEA 2019 via UK CMO 2022</td></tr>
+    <tr><td>CO2 factors</td><td>wood ~400 · oil ~270 · gas ~200 kg/MWh;
+        electric = grid ~200 kg/MWh ÷ heat-pump COP 3 ≈ 67</td>
+        <td>IPCC kg/GJ values; BEIS/DESNZ UK grid carbon. Wood's
+        "carbon neutrality" is the decades-later re-growth claim —
+        see the <a href="arguments/carbon-neutral.html">carbon-neutral
+        rebuttal</a>.</td></tr>
     <tr><td>Indoor refuelling</td><td>PM2.5 floods the room at every
         door-opening, incl. Ecodesign</td><td>Chakraborty et al. 2020</td></tr>
   </table>
@@ -122,6 +146,14 @@ bottom shows the arithmetic.</p>
   var GAS_PER_KG = 0.72 * 0.0043;    // gas boiler per equivalent kg-wood of heat
   var CAR_MG_PER_KM = 4.5;
   var WHO_UG_M3 = 15, POOL_M3 = 2500;
+  // comparison sources, per MWh of heat delivered
+  var PM25_MWH = {gas: 0.72, oil: 5.4, electric: 0};   // g/MWh
+  var CO2_MWH  = {wood: 400, oil: 270, gas: 200,       // kg/MWh
+                  electric: 200 / 3};                  // grid ÷ COP 3 heat pump
+  var CMP_LABEL = {wood: "your wood burning", gas: "gas boiler",
+                   oil: "oil boiler", electric: "electric (heat pump)"};
+  var CMP_COL = {wood: "#b34700", gas: "#1b4965", oil: "#6b3fa0",
+                 electric: "#4a7c59"};
   var DEFAULT_KG = {ecodesign: 5, oldstove: 5, openfire: 5, pellet: 5,
                     firepit: 8, bonfire: 100};
   var INDOOR = {
@@ -175,6 +207,54 @@ bottom shows the arithmetic.</p>
       "≈ " + fmt(street * 1000 / CAR_MG_PER_KM) + " km of Euro-6 driving, " +
       "or ~" + fmt(street / perSession) + " single-session burns";
     document.getElementById("indoorNote").textContent = INDOOR[ap];
+    drawCmp(ap, kg, sessions);
+  }
+
+  function drawCmp(ap, kg, sessions) {
+    var card = document.getElementById("cmpCard");
+    if (!document.getElementById("cmp").checked) {
+      card.style.display = "none"; return;
+    }
+    card.style.display = "";
+    var metric = document.querySelector("input[name=metric]:checked").value;
+    var mwh = kg * sessions * 0.0043;          // heat delivered, MWh
+    var rows;
+    if (metric === "pm25") {
+      rows = [["wood", EF[ap] * kg * sessions],
+              ["oil", PM25_MWH.oil * mwh],
+              ["gas", PM25_MWH.gas * mwh],
+              ["electric", 0]];
+      document.getElementById("cmpNote").textContent =
+        "Grams PM2.5 per year for the same ~" + mwh.toFixed(1) +
+        " MWh of heat. Electric heating emits no PM2.5 at the point " +
+        "of use — upstream grid combustion is a small, centralised, " +
+        "regulated source.";
+    } else {
+      rows = [["wood", CO2_MWH.wood * mwh],
+              ["oil", CO2_MWH.oil * mwh],
+              ["gas", CO2_MWH.gas * mwh],
+              ["electric", CO2_MWH.electric * mwh]];
+      document.getElementById("cmpNote").textContent =
+        "kg CO2 at the point of use for the same ~" + mwh.toFixed(1) +
+        " MWh of heat. Wood emits roughly twice gas's CO2 per unit " +
+        "heat at the chimney — the 'carbon neutral' claim rests on " +
+        "re-growth decades later, not on what comes out of your flue.";
+    }
+    var max = 0;
+    rows.forEach(function (r) { if (r[1] > max) max = r[1]; });
+    var unit = metric === "pm25" ? " g" : " kg";
+    var html = "";
+    rows.forEach(function (r) {
+      var w = max > 0 ? Math.max(r[1] / max * 100, r[1] > 0 ? 1.5 : 0) : 0;
+      var v = r[1] < 10 ? r[1].toFixed(1) : Math.round(r[1]).toLocaleString("en-GB");
+      html += "<div style='display:flex;align-items:center;margin:5px 0'>" +
+        "<div style='width:170px;font-size:.85em'>" + CMP_LABEL[r[0]] + "</div>" +
+        "<div style='height:18px;width:" + w + "%;background:" + CMP_COL[r[0]] +
+        ";border-radius:3px'></div>" +
+        "<div style='margin-left:8px;font-weight:700;white-space:nowrap'>" +
+        (r[1] === 0 ? "0" : v) + unit + "</div></div>";
+    });
+    document.getElementById("cmpBars").innerHTML = html;
   }
 
   document.getElementById("appliance").addEventListener("change",
@@ -183,8 +263,11 @@ bottom shows the arithmetic.</p>
       el.value = DEFAULT_KG[e.target.value];
       calc();
     });
-  ["appliance","kg","freq","weeks","homes"].forEach(function (id) {
+  ["appliance","kg","freq","weeks","homes","cmp"].forEach(function (id) {
     document.getElementById(id).addEventListener("input", calc);
+  });
+  document.querySelectorAll("input[name=metric]").forEach(function (el) {
+    el.addEventListener("change", calc);
   });
   calc();
 })();

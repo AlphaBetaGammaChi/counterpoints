@@ -42,8 +42,8 @@ closed windows. When communities have switched away from wood heating,
   in a different place.
 - [**Wood smoke calculator**](calculator.html) — plug in your stove,
   fuel load and evenings: see your PM2.5 per session/year/decade, your
-  street's total, and what it means as car-km or pools of air at the
-  WHO limit.
+  street's total, what it means as car-km or pools of air at the WHO
+  limit, and how the same heat compares from gas, oil or electric.
 - [Full bibliography](references.md) — every source, DOI-linked.
 - [Campaign groups & official resources](advocacy.md) — Doctors & Scientists
   Against Wood Smoke Pollution, Mums for Lungs, Clean Air Hub, and more.
