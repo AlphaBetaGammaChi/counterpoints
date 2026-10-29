@@ -127,14 +127,28 @@ Su 2011.
 
 ## 4. How it harms
 
-The toxicology is consistent across study types:
+The toxicology is consistent across study types — see
+[What wood smoke does inside your body](the-body.md) for the full
+mechanism walk-through.
 
 - **Cell studies:** wood-smoke PM induces oxidative stress, DNA damage
   and inflammation at levels on a par with — or exceeding —
   traffic-derived particles (Danielsen et al. 2011).
 - **Controlled human exposure:** a few hours of wood-smoke exposure
-  provokes measurable airway and systemic responses in susceptible
-  individuals (Riddervold et al. 2012).
+  provokes measurable airway and systemic responses — neutrophilic lung
+  inflammation (Ghio et al. 2012), airway oxidative stress
+  (Olin et al. 2008), coagulation and lipid-peroxidation markers
+  (Barregård et al. 2006), increased arterial stiffness and reduced
+  heart-rate variability within an hour (Unosson et al. 2013), and
+  stronger responses in susceptible individuals (Riddervold et al. 2012).
+- **Systemic translocation:** inhaled ultrafine particles reach the
+  bloodstream within minutes (Nemmar et al. 2002) — the route by which
+  a lung exposure becomes a cardiovascular one (Brook et al. 2010).
+- **Children:** 7 of 8 studies reviewed by Larson & Koenig (1994)
+  linked wood smoke to respiratory symptoms, infections and reduced
+  lung function in children; the European Respiratory Society's
+  position paper estimates **at least 40,000 premature deaths per year
+  in Europe** from biomass smoke (Sigsgaard et al. 2015).
 - **Community epidemiology:** adverse respiratory and cardiovascular
   effects in wood-burning communities occur even below legal limits
   (Boman et al. 2003).
@@ -160,8 +174,10 @@ The toxicology is consistent across study types:
   millions of dollars a year in wood-smoke health costs
   (Borchers-Arriagada et al. 2020).
 
-**Citations:** Danielsen 2011; Riddervold 2012; Boman 2003; Johnston
-2013; Noonan 2012; Reid 2016; Liu 2015; Burke 2023; Burnett 2018;
+**Citations:** Danielsen 2011; Ghio 2012; Olin 2008; Barregård 2006;
+Unosson 2013; Nemmar 2002; Brook 2010; Riddervold 2012; Boman 2003;
+Larson & Koenig 1994; Zelikoff 2002; Sigsgaard 2015; Johnston 2013;
+Noonan 2012; Reid 2016; Liu 2015; Burke 2023; Burnett 2018;
 WHO 2021, 2024; Borchers-Arriagada 2020.
 
 ---

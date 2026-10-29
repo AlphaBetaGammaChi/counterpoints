@@ -7,9 +7,20 @@ title: References
 ## Peer-reviewed literature
 
 ### Health effects & toxicology
+- Sigsgaard, T. et al. (2015). "Health impacts of anthropogenic biomass
+  burning in the developed world." *European Respiratory Journal*
+  46:1577. — ERS position paper; ≥40,000 premature deaths/yr in Europe.
+  [doi:10.1183/13993003.01865-2014](https://doi.org/10.1183/13993003.01865-2014)
 - Naeher, L.P. et al. (2007). "Woodsmoke Health Effects: A Review."
   *Inhalation Toxicology*.
   [doi:10.1080/08958370600985875](https://doi.org/10.1080/08958370600985875)
+- Larson, T.V. & Koenig, J.Q. (1994). "Wood Smoke: Emissions and
+  Noncancer Respiratory Effects." *Annual Review of Public Health* 15:133.
+  — 7/8 child studies positive; causal link supported.
+  [doi:10.1146/annurev.pu.15.050194.001025](https://doi.org/10.1146/annurev.pu.15.050194.001025)
+- Zelikoff, J.T. et al. (2002). "The Toxicology of Inhaled Woodsmoke."
+  *Journal of Toxicology and Environmental Health B* 5:269.
+  [doi:10.1080/10937400290070062](https://doi.org/10.1080/10937400290070062)
 - Boman, B.C. et al. (2003). "Adverse health effects from ambient air
   pollution in relation to residential wood combustion in modern
   society." *Scandinavian Journal of Work, Environment & Health*.
@@ -48,6 +59,35 @@ title: References
   Contributes to Ambient PM2.5 Air Pollution and the Burden of Disease."
   *Environmental Health Perspectives*.
   [doi:10.1289/ehp.1206340](https://doi.org/10.1289/ehp.1206340)
+
+### Mechanisms — controlled human exposure & cardiovascular
+- Ghio, A.J. et al. (2012). "Exposure to wood smoke particles produces
+  inflammation in healthy volunteers." *Occupational and Environmental
+  Medicine* 69:170.
+  [doi:10.1136/oem.2011.065276](https://doi.org/10.1136/oem.2011.065276)
+- Olin, A.-C. et al. (2008). "Experimental exposure to wood smoke:
+  effects on airway inflammation and oxidative stress." *Occupational
+  and Environmental Medicine* 65:319.
+  [doi:10.1136/oem.2006.032458](https://doi.org/10.1136/oem.2006.032458)
+- Barregård, L. et al. (2006). "Experimental Exposure to Wood-Smoke
+  Particles in Healthy Humans: Effects on Markers of Inflammation,
+  Coagulation, and Lipid Peroxidation." *Inhalation Toxicology* 18:845.
+  [doi:10.1080/08958370600685798](https://doi.org/10.1080/08958370600685798)
+- Stockfelt, L. et al. (2012). "Effects on airways of short-term
+  exposure to two kinds of wood smoke in a chamber study of healthy
+  humans." *Inhalation Toxicology* 24:47.
+  [doi:10.3109/08958378.2011.633281](https://doi.org/10.3109/08958378.2011.633281)
+- Nemmar, A. et al. (2002). "Passage of inhaled particles into the blood
+  circulation in humans." *Circulation* 105:411.
+  [doi:10.1161/hc0402.104118](https://doi.org/10.1161/hc0402.104118)
+- Unosson, J. et al. (2013). "Exposure to wood smoke increases arterial
+  stiffness and decreases heart rate variability in humans." *Particle
+  and Fibre Toxicology* 10:20.
+  [doi:10.1186/1743-8977-10-20](https://doi.org/10.1186/1743-8977-10-20)
+- Brook, R.D. et al. (2010). "Particulate Matter Air Pollution and
+  Cardiovascular Disease: An Update to the Scientific Statement From the
+  American Heart Association." *Circulation* 121:2331.
+  [doi:10.1161/CIR.0b013e3181dbece1](https://doi.org/10.1161/CIR.0b013e3181dbece1)
 
 ### Wildfire smoke (corroborating evidence)
 - Reid, C.E. et al. (2016). "Critical Review of Health Impacts of
@@ -100,6 +140,24 @@ title: References
   U.S. impacts and regulations." *Journal of the Air & Waste Management
   Association*.
   [doi:10.1080/10962247.2022.2050442](https://doi.org/10.1080/10962247.2022.2050442)
+
+### Open burning, bonfires & fireworks
+- Lemieux, P.M. et al. (2004). "Emissions of organic air toxics from
+  open burning: a comprehensive review." *Progress in Energy and
+  Combustion Science* 30:1.
+  — EPA review: open burning emits more per kg fuel than controlled
+  combustion; covers yard waste, camp fires, household waste.
+  [doi:10.1016/j.pecs.2003.08.001](https://doi.org/10.1016/j.pecs.2003.08.001)
+- Andreae, M.O. (2019). "Emission of trace gases and aerosols from
+  biomass burning – an updated assessment." *Atmospheric Chemistry and
+  Physics* 19:8523.
+  — canonical emission-factor compilation, 121 species, incl. domestic
+  waste burning.
+  [doi:10.5194/acp-19-8523-2019](https://doi.org/10.5194/acp-19-8523-2019)
+- Godri, K.J. et al. (2010). "Particulate Oxidative Burden Associated
+  with Firework Activity." *Environmental Science & Technology* 44:8295.
+  — Guy Fawkes/Diwali particle oxidative burden exceeds traffic per µg.
+  [doi:10.1021/es1016284](https://doi.org/10.1021/es1016284)
 
 ### Climate
 - Bond, T.C. et al. (2013). "Bounding the role of black carbon in the
